@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="7" height="8" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="1">
+ <editorsettings>
+  <export target="csv/room 3.csv" format="csv"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../../tiles/doors.tsx"/>
+ <tileset firstgid="7" source="../../tiles/stonetiles.tsx"/>
+ <tileset firstgid="16" source="../../tiles/misc.tsx"/>
+ <tileset firstgid="26" source="../../tiles/tilesheets/debug.tsx"/>
+ <layer id="1" name="ground" width="7" height="8">
+  <data encoding="csv">
+7,8,8,8,8,8,9,
+10,11,11,11,11,11,12,
+10,16,16,16,16,16,12,
+10,16,16,16,16,16,12,
+10,16,16,16,16,16,12,
+10,16,16,16,16,16,12,
+10,16,16,16,16,16,12,
+13,14,14,14,14,14,15
+</data>
+ </layer>
+ <layer id="2" name="objects" width="7" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,
+0,0,0,25,0,0,0,
+0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,
+0,0,0,5,0,0,0,
+0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="invisible" width="7" height="8" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,
+26,0,0,0,0,0,26,
+26,0,0,0,0,0,26,
+26,0,0,0,0,0,26,
+26,0,0,0,0,0,26,
+26,0,0,27,0,0,26,
+26,26,26,26,26,26,26
+</data>
+ </layer>
+</map>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="1">
+ <editorsettings>
+  <export target="csv/room 1.csv" format="csv"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../../tiles/tilesheets/misc.tsx"/>
+ <tileset firstgid="11" source="../../tiles/tilesheets/stonetiles.tsx"/>
+ <tileset firstgid="20" source="../../tiles/tilesheets/doors.tsx"/>
+ <tileset firstgid="26" source="../../tiles/tilesheets/symbols.tsx"/>
+ <tileset firstgid="32" source="info.tsx"/>
+ <tileset firstgid="33" source="../../tiles/tilesheets/debug.tsx"/>
+ <layer id="1" name="ground tiles" width="11" height="11">
+  <data encoding="csv">
+11,12,12,12,12,12,12,12,12,12,13,
+14,15,15,15,15,15,15,15,15,15,16,
+14,1,1,1,1,1,1,1,1,1,16,
+14,1,1,1,1,1,1,1,1,1,16,
+14,1,1,1,1,1,1,1,1,1,16,
+14,1,1,1,0,0,0,1,1,1,16,
+14,1,1,1,32,0,0,1,1,1,16,
+14,1,1,1,1,1,1,1,1,1,16,
+14,1,1,1,1,1,1,1,1,1,16,
+14,1,1,1,1,1,1,1,1,1,16,
+17,18,18,18,18,18,18,18,18,18,19
+</data>
+ </layer>
+ <layer id="2" name="objects" width="11" height="11" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,20,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,24,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="invisible" width="11" height="11" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,
+33,33,33,33,33,33,33,33,33,33,33,
+33,0,0,0,0,0,0,0,0,0,33,
+33,0,0,0,0,0,0,0,0,0,33,
+33,0,0,0,0,0,0,0,0,0,33,
+33,0,0,0,0,0,0,0,0,0,33,
+33,0,0,0,0,0,0,0,0,0,33,
+33,0,0,0,0,0,0,0,0,0,33,
+33,0,0,0,0,0,0,0,0,0,33,
+33,0,0,0,0,34,0,0,0,0,33,
+33,33,33,33,33,33,33,33,33,33,33
+</data>
+ </layer>
+</map>
