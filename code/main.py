@@ -39,13 +39,27 @@ class Game:
                     self.changeState()
             elif self.activeStatus == 1:
                 self.level.update()
+                if self.level.player.health <= 0:
+                    self.activeStatus = 0
+                    self.changeState()
+                if self.level.usePortal():
+                    self.activeStatus = 2
+                    self.changeState()
+            elif self.activeStatus == 2:
+                self.win.update()
+                if self.win.checkPushed():
+                    self.activeStatus = 0
+                    self.changeState()
             
     def changeState(self):
         if self.activeStatus == 0:
             self.mainMenu = MainMenu(self.screen)
         if self.activeStatus == 1:
             self.level = Level(self.screen)
+        if self.activeStatus == 2:
+            self.win = WinScreen(self.screen)
  
 if __name__ == "__main__":
     game = Game()
-    game.run() 
+    game.run()
+

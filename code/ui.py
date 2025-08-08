@@ -39,3 +39,31 @@ class MainMenu:
         if self.checkPushed(self.quitRect):
             pygame.quit()
             sys.exit()
+
+class WinScreen:
+    def __init__(self,screen):
+        self.screen = screen
+
+        self.image = pygame.image.load("../graphics/logo/win.png").convert_alpha()
+        self.rect = self.image.get_rect(topleft = (0,0))
+
+        #button setup
+        self.quitButton = pygame.image.load("../graphics/logo/quit.png").convert_alpha()
+        self.quitRect = self.quitButton.get_rect(center = (SCREENWIDTH//2,SCREENHEIGHT//1.3))
+
+    def draw(self):
+        self.screen.fill("#1D181F")
+        self.screen.blit(self.image,self.rect)
+        self.screen.blit(self.quitButton,self.quitRect)
+
+
+    def checkPushed(self,):
+        self.mouse = pygame.mouse.get_pressed()
+        self.mousePos = pygame.mouse.get_pos()
+        
+
+        if self.quitRect.collidepoint(self.mousePos[0],self.mousePos[1]) and self.mouse[0]:
+            return True
+
+    def update(self):
+        self.draw()
