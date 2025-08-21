@@ -14,6 +14,8 @@ class Game:
         #controls FPS and tracks time for timer calculations
         self.clock = pygame.time.Clock()
 
+        self.buttonPressed = False
+
         self.paused = False
         self.activeStatus = 0
         self.changeState()
@@ -41,6 +43,12 @@ class Game:
                 if self.mainMenu.checkPushed(self.mainMenu.playRect):
                     self.activeStatus = 1
                     self.changeState()
+                if self.mainMenu.checkPushed(self.mainMenu.quitRect):
+                    if not self.buttonPressed:
+                        pygame.quit()
+                        sys.exit()
+                else:
+                    self.buttonPressed = False
             elif self.activeStatus == 1:
                 if not self.paused:
                     self.level.update()
@@ -56,6 +64,7 @@ class Game:
                 self.win.update()
                 if self.win.checkPushed():
                     self.activeStatus = 0
+                    self.buttonPressed = True
                     self.changeState()
             
     def changeState(self):

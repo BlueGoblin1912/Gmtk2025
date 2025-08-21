@@ -36,9 +36,7 @@ class MainMenu:
 
     def update(self):
         self.draw()
-        if self.checkPushed(self.quitRect):
-            pygame.quit()
-            sys.exit()
+        
 
 class WinScreen:
     def __init__(self,screen):
@@ -60,9 +58,8 @@ class WinScreen:
     def checkPushed(self):
         self.mouse = pygame.mouse.get_pressed()
         self.mousePos = pygame.mouse.get_pos()
-        
 
-        if self.quitRect.collidepoint(self.mousePos[0],self.mousePos[1]) and self.mouse[2]:
+        if self.quitRect.collidepoint(self.mousePos[0],self.mousePos[1]) and self.mouse[0]:
             return True
 
     def update(self):
