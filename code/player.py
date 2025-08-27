@@ -5,7 +5,7 @@ from math import sin
 class Player(pygame.sprite.Sprite):
     def __init__(self,pos,groups,changeRoom,obsticleSprites,interact,useItem):
         super().__init__(groups)
-        self.image = pygame.image.load("../graphics/player/player.png").convert_alpha()
+        self.image = pygame.image.load("../graphics/sprites/player.png").convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
         self.hitbox = self.rect.inflate(0,-50)
         self.hitbox2 = self.rect.inflate(0,-20)

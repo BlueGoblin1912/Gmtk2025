@@ -30,7 +30,7 @@ class Level:
         pygame.font.init()
         self.textFont = pygame.font.Font(font,30)
 
-        #groups
+        #groups 
         self.visibleSprites = YSortCameraGroup()
         self.collisionSprites = pygame.sprite.Group()
         self.interactiveSprites = pygame.sprite.Group()
@@ -50,7 +50,7 @@ class Level:
         self.lightsOff = False
         self.playerPos = (330,490)
         self.player = Player(self.playerPos,[self.visibleSprites],self.changeRoom,self.collisionSprites,self.interact,self.useItem)
-        
+        self.usedChests = []
 
         self.createLevel(self.level)
 
@@ -104,9 +104,9 @@ class Level:
                             elif col == "9":
                                 Chair((x,y),[self.visibleSprites,self.collisionSprites,self.worldSprites])
                             elif col == "10":
-                                Chest((x,y),[self.visibleSprites,self.interactiveSprites,self.worldSprites],"closed",self.level,self.player)
+                                Chest((x,y),[self.visibleSprites,self.interactiveSprites,self.worldSprites],"closed",self.level,self.player, self.usedChests)
                             elif col == "11":
-                                Chest((x,y),[self.visibleSprites,self.interactiveSprites,self.worldSprites],"trapped",self.level,self.player)
+                                Chest((x,y),[self.visibleSprites,self.interactiveSprites,self.worldSprites],"trapped",self.level,self.player, self.usedChests)
                             elif col == "12":
                                 Lever((x,y),[self.visibleSprites,self.interactiveSprites,self.worldSprites],self.turnOffTheLights)
                             elif col == "13":
