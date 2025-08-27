@@ -26,6 +26,7 @@ class Level:
         self.seconds = 30
         self.lastsecond = 0
         self.offsetTime = 0
+        self.sleepPercent = 0
         pygame.font.init()
         self.textFont = pygame.font.Font(font,30)
 
@@ -136,27 +137,29 @@ class Level:
     def turnOffTheLights(self):
         self.lightsOff = True
         self.visibleSprites.turnOffTheLights()
-        
-    def showBar(self):
-        healthRect = pygame.Rect(10,10,200,25)
-        pygame.draw.rect(self.screen,"#222222",healthRect)
 
-        ratio = self.player.health / self.player.stats["health"]
-        current_width = healthRect.width * ratio
-        current_rect = healthRect.copy()
+    def showBar(self,top,current,max,colour):
+        rect = pygame.Rect(10,top,200,25)
+        pygame.draw.rect(self.screen,"#222222",rect)
+
+        ratio = current / max
+        current_width = rect.width * ratio
+        current_rect = rect.copy()
         current_rect.width = current_width
 
-        pygame.draw.rect(self.screen,"#ff0000",current_rect)
-        pygame.draw.rect(self.screen,"#111111",healthRect,3)
+        pygame.draw.rect(self.screen,colour,current_rect)
+        pygame.draw.rect(self.screen,"#111111",rect,3)
 
     def timer(self):
         currentTime = pygame.time.get_ticks()
         if currentTime - self.lastsecond >=1000:
             self.lastsecond = pygame.time.get_ticks()
             self.seconds -= 1
-            if self.seconds <= 0:
+            if self.seconds < 0:
                 self.minutes -= 1
                 self.seconds = 59
+        if self.minutes < 0:
+            self.sleepPercent += 1/3
             
         if self.offsetTime != 0:
             self.seconds += self.offsetTime
@@ -166,25 +169,11 @@ class Level:
             self.offsetTime = 0
 
         if self.minutes < 0:
-            self.minutes = 1
-            self.seconds = 30
-            self.lastsecond = 0
-            self.offsetTime = 0
-
-            self.level = self.startLevel
-            self.player.hitbox.topleft = self.playerPos
-            self.playerPos=(330,490)
-            self.player.inventory = [None,None,None,None]
-            self.player.idolUsed = False
-            self.player.combo = []
-            self.player.health = self.player.stats["health"]
-            self.startLevel = "room 1"
-            self.visibleSprites.lights = False
-            self.lightsOff = False
-            for sprite in self.worldSprites:
-                sprite.kill()
+            if self.sleepPercent > 100:
+                self.restart()
+            else:
+                self.showBar(45,self.sleepPercent,100,"#8c00ff")
             
-            self.createLevel(self.level)
         else:
             text = self.textFont.render(f"{self.minutes}:{self.seconds} Remaining",False,"#86000088")
             rect = text.get_rect(center = (SCREENWIDTH//2,20))
@@ -193,6 +182,28 @@ class Level:
             self.screen.blit(textBg,rectBg)
             self.screen.blit(text,rect)
 
+    def restart(self):
+        self.minutes = 1
+        self.seconds = 30
+        self.lastsecond = 0
+        self.offsetTime = 0
+        self.sleepPercent = 0
+
+        self.level = self.startLevel
+        self.player.hitbox.topleft = self.playerPos
+        self.playerPos=(330,490)
+        #self.player.inventory = [None,None,None,None]
+        self.player.idolUsed = False
+        self.player.combo = []
+        self.player.health = self.player.stats["health"]
+        self.startLevel = "room 1"
+        self.visibleSprites.lights = False
+        self.lightsOff = False
+        for sprite in self.worldSprites:
+            sprite.kill()
+        
+        self.createLevel(self.level)
+        
     def interact(self):
         for sprite in self.interactiveSprites:
             if sprite.rect.colliderect(self.player.rect) and self.level != "room 7":
@@ -228,7 +239,7 @@ class Level:
     def usePortal(self):
         for sprite in self.portal:
             if sprite.rect.colliderect(self.player.rect) and pygame.key.get_pressed()[pygame.K_e]:
-                if self.portalOn:
+                if sprite.on:
                     return True
             
     def useItem(self,index):
@@ -242,6 +253,7 @@ class Level:
             elif item == "../graphics/sprites/corrupted time.png":
                 self.player.inventory[index] = None
                 self.offsetTime = 10
+                self.sleepPercent += 25
             elif item == "../graphics/sprites/key.png":
                 for sprite in self.doorSprites:
                     if sprite.status == "locked" and sprite.rect.colliderect(self.player.rect):
@@ -252,7 +264,9 @@ class Level:
                     if sprite.rect.colliderect(self.player.rect):
                         self.player.inventory[index] = None
                         sprite.active()
-                        self.portalOn = True
+                        for sprite in self.portal:
+                            sprite.on = True
+                            sprite.activate()
 
     def trapPit(self):
         for pitSprite in self.pitSprites:
@@ -276,7 +290,7 @@ class Level:
         self.visibleSprites.custom_draw(self.player,self.level)
         self.trapSprites.update(self.player,self.collisionSprites)
         self.timer()
-        self.showBar()
+        self.showBar(10,self.player.health,self.player.stats["health"],"#ff0000")
         self.shooterSprites.update(self.fireBalls)
         self.harmSprites.update(self.player,self.collisionSprites)
         if self.trapPit():

@@ -91,15 +91,14 @@ class Player(pygame.sprite.Sprite):
     def input(self):
         keys = pygame.key.get_pressed()
         self.direction = pygame.math.Vector2()
-        if self.canTakeDamage:
-            if keys[pygame.K_w]:
-                self.direction.y += -1
-            if keys[pygame.K_s]:
-                self.direction.y += 1
-            if keys[pygame.K_a]:
-                self.direction.x += -1
-            if keys[pygame.K_d]:
-                self.direction.x += 1
+        if keys[pygame.K_w]:
+            self.direction.y += -1
+        if keys[pygame.K_s]:
+            self.direction.y += 1
+        if keys[pygame.K_a]:
+            self.direction.x += -1
+        if keys[pygame.K_d]:
+            self.direction.x += 1
 
         if keys[pygame.K_e]:
             self.interact()
