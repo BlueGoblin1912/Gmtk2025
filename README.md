@@ -1,8 +1,8 @@
-#LoopZ
+# LoopZ
 Hello!! Welcome to my game.
 I have never really done this before so it was a really good learning experience for me.
 
-##Loading the game 
+## Loading the game 
 The only way that I could find to publish the game due to it being a pygamegame was to get the user to download it directly therefore:
 In order to try the game you will
 If you wish to try the game its best if you download the LoopZ.zip file and run the main.exe in the code folder or the main.exe shortcut in the root folder.
