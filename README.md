@@ -1,10 +1,23 @@
-# LoopZ
+# LoopZ 🔁
 Hello!! Welcome to my game.
 I have never really done this before so it was a really good learning experience for me.
+I hope that everyone who gets a chance to play it enjoys it as much as I did making it!!
 
-## Loading the game 
-The only way that I could find to publish the game due to it being a pygamegame was to get the user to download it directly therefore:
-In order to try the game you will
-If you wish to try the game its best if you download the LoopZ.zip file and run the main.exe in the code folder or the main.exe shortcut in the root folder.
-I really hope you enjoy my game, it has been a real eye opener for me :)
-The controls for the game are WASD to move and E to interact with doors/chests. Items which can be used in the hotbar are used by pressing the respectivve number keys (1,2,3,4) certain items can only be used in certain cases (the locekd door or the portal pedistal).
+## Aim of the game 🎯
+You play as a character who is stuck in a time loop and is trying to escape before the timer runs out and you have to restart.
+gather items which will allow you to get further in the game and reach the portal before you have to restart whilst dealing with traps and puzzles.
+
+## Loading the game 👾
+In order to load the game you have to download the LoopZ.zip file from the latest releases and extract it. Navigate to the code folder and run main.exe to load the game. 
+
+## Controls 🎮
+1. movement: W,A,S amd D to move up, left, down and right respectively.
+2. use items: 1,2,3 and 4 for the slot number on the hotbar, some items only work in certain situations.
+3. Interact: E to interact with doors,chests,ect
+4. Pause: ESC to pause the timer
+
+## Items 🛠️
+1. Golden idol: A magical goblet which can save your position between loops.
+2. Corrupted time: Increases you time, but...
+3. Key: unlocks: Used on the locked door to reach the treasures inside.
+4. Gem: It seems like it would sit nicely on something.
